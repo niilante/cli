@@ -1,0 +1,20 @@
+machine:
+  environment:
+    GOPATH: /home/ubuntu/.go_workspace
+    GO15VENDOREXPERIMENT: 1
+    ARUKAS_JSON_API_SECRET: PASSWORD
+    ARUKAS_JSON_API_TOKEN: USER
+dependencies:
+  cache_directories:
+    - /home/ubuntu/.go_workspace
+  pre:
+    - go get github.com/kr/godep
+  override:
+    - mkdir -p "/home/ubuntu/.go_workspace/src/github.com/arukasio/arukas-cli"
+    - rsync -azC --delete ./ "/home/ubuntu/.go_workspace/src/github.com/arukasio/arukas-cli"
+test:
+  pre:
+    - godep restore
+    - godep go vet ./...
+  override:
+    - godep go test ./...

@@ -1,0 +1,5 @@
+target
+pkg
+.envrc
+cmd/arukas/arukas
+.vagrant
