@@ -1,38 +1,52 @@
+# AppVeyor file
+# http://www.appveyor.com/docs/appveyor-yml
+
+# version format
+# you can use {branch} name in version format too
+# version: 1.0.{build}-{branch}
 version: 0.1.0.beta-{branch}-{build}
+
+# allow build numbers to not increment when a PULL REQUEST check occurs.
+# https://github.com/appveyor/ci/issues/351
 pull_requests:
   do_not_increment_build_number: true
+
+# Operating system (build VM template)
 os: Windows Server 2012 R2
-clone_folder: c:\gopath\src\github.com\arukasio\arukas-cli
+
+# environment variables
 environment:
   GOPATH: C:\gopath
   GO15VENDOREXPERIMENT: 1
   ARUKAS_JSON_API_SECRET: PASSWORD
   ARUKAS_JSON_API_TOKEN: USER
+
+# clone directory
+clone_folder: c:\gopath\src\github.com\arukasio\arukas-cli
+
+# Install scripts. (runs after repo cloning)
 install:
   - set PATH=C:\gopath\bin;C:\msys64\mingw64\bin;%PATH%
   - go get github.com/kr/godep
   - godep restore
-build_script:
-  - cmd: go build -o arukas.exe cmd\arukas\main.go
+
+# scripts to run after build
 after_build:
   - cmd: 7z a arukas.zip arukas.exe
+
+# to run your custom scripts instead of automatic MSBuild
+build_script:
+  - cmd: go build -o arukas.exe cmd\arukas\main.go
+
+# to run your custom scripts instead of automatic tests
 test_script:
   - cmd: godep go test -v
-deploy:
-  provider: FTP
-  protocol: sftp
-  host: desolation-mrsk.arukas.io
-  username: appveyor
-  folder: appveyor
-  password:
-    secure: xKx9jLlU+toA/EkXQogOt+a3h+XO28zNOJe0sFRZ+TM=
+
+
+#---------------------------------#
+#      artifacts configuration    #
+#---------------------------------#
+
 artifacts:
   - path: arukas.zip
     name: arukas
-notifications:
-  - provider: Slack
-    incoming_webhook: https://hooks.slack.com/services/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
-    channel: ac-dev
-    on_build_success: true
-    on_build_failure: true
-    on_build_status_changed: true
