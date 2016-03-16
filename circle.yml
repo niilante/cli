@@ -11,6 +11,7 @@ dependencies:
     - /home/ubuntu/.go_workspace
   pre:
     - go get -u github.com/tools/godep
+    - go get -u github.com/golang/lint/golint
   override:
     - mkdir -p ${REPO_ROOT}
     - rsync -azC --delete ./ ${REPO_ROOT}
@@ -20,4 +21,5 @@ test:
     - cd ${REPO_ROOT} && godep restore
   override:
     - cd ${REPO_ROOT} && make test vet
+    - cd ${REPO_ROOT} && for package in `go list ./...| grep -v vendor`; do golint ${package}; done
     - cd ${REPO_ROOT} && godep go test -cover -bench -benchmem `go list ./... | grep -v /vendor/` -v
