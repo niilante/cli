@@ -25,6 +25,20 @@ core-dev: fmtcheck generate
 core-test: generate
 	@echo "Testing core packages..." && go test $(shell go list ./... | grep -v -E 'builtin|vendor')
 
+# Shorthand for building and installing just one plugin for local testing.
+# Run as (for example): make plugin-dev PLUGIN=provider-aws
+plugin-dev: fmtcheck generate
+	go install github.com/hashicorp/terraform/builtin/bins/$(PLUGIN)
+	mv $(GOPATH)/bin/$(PLUGIN) $(GOPATH)/bin/terraform-$(PLUGIN)
+
+# test runs the unit tests
+test: fmtcheck generate
+	TF_ACC= go test $(TEST) $(TESTARGS) -timeout=30s -parallel=4
+
+# testrace runs the race checker
+testrace: fmtcheck generate
+	TF_ACC= go test -race $(TEST) $(TESTARGS)
+
 # vet runs the Go source code static analysis tool `vet` to find
 # any common errors.
 vet:
