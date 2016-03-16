@@ -10,8 +10,8 @@ dependencies:
   pre:
     - go get github.com/kr/godep
   override:
-    - mkdir -p "/home/ubuntu/.go_workspace/src/github.com/arukasio/arukas-cli"
-    - rsync -azC --delete ./ "/home/ubuntu/.go_workspace/src/github.com/arukasio/arukas-cli"
+    - mkdir -p "/home/ubuntu/.go_workspace/src/github.com/arukasio/cli"
+    - rsync -azC --delete ./ "/home/ubuntu/.go_workspace/src/github.com/arukasio/cli"
 test:
   pre:
     - godep restore
