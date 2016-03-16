@@ -6,12 +6,23 @@ arukas/cli
 # Arukas Cloud Command Line Interface
 
 * Get api key here https://app.arukas.io/settings/api-keys
-* export it
+* edit it .env file
 
-```bash
-export ARUKAS_JSON_API_SECRET=hoge
-export ARUKAS_JSON_API_TOKEN=hoge
 ```
+ARUKAS_JSON_API_SECRET=hoge
+ARUKAS_JSON_API_TOKEN=hoge
+```
+
+## Environment variable
+
+You can overload and customize specific variables when running scripts. Simply create `.env` with the environment variables you need, for example, `ARUKAS_JSON_API_SECRET`
+
+```
+# .env
+ARUKAS_JSON_API_SECRET=YOUR_ARUKAS_JSON_API_SECRET
+```
+
+You can look at `.env.sample` for other variables used by this application.
 
 ### Cross Compilation and Building for Distribution
 
