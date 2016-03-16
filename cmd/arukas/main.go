@@ -1,7 +1,7 @@
 package main
 
 import (
-	arukas "github.com/arukasio/arukas-cli"
+	arukas "github.com/arukasio/cli"
 	"os"
 )
 

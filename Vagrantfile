@@ -46,10 +46,10 @@ SCRIPT
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "bento/ubuntu-14.04"
-  config.vm.hostname = "arukas-cli"
+  config.vm.hostname = "cli"
 
   config.vm.provision "shell", inline: $script, privileged: false
-  config.vm.synced_folder '.', '/opt/gopath/src/github.com/arukasio/arukas-cli'
+  config.vm.synced_folder '.', '/opt/gopath/src/github.com/arukasio/cli'
 
   ["vmware_fusion", "vmware_workstation"].each do |p|
     config.vm.provider p do |v|

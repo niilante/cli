@@ -19,7 +19,7 @@ quickdev: generate
 # changes will require a rebuild of everything, in which case the dev
 # target should be used.
 core-dev: fmtcheck generate
-	go install github.com/arukasio/arukas-cli
+	go install github.com/arukasio/cli
 
 # Shorthand for quickly testing the core of Arukas (i.e. "not providers")
 core-test: generate
