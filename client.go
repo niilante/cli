@@ -18,7 +18,7 @@ import (
 	"time"
 )
 
-const VERSION = "0.1.0.beta-7"
+const VERSION = "0.1.0.beta-8"
 
 type Client struct {
 	ApiURL     *url.URL
