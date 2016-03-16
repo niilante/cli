@@ -53,7 +53,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   ["vmware_fusion", "vmware_workstation"].each do |p|
     config.vm.provider p do |v|
-      v.vmx["memsize"] = "2048"
+      v.vmx["memsize"] = "1024"
       v.vmx["numvcpus"] = "2"
     end
   end
