@@ -4,17 +4,20 @@ machine:
     GO15VENDOREXPERIMENT: 1
     ARUKAS_JSON_API_SECRET: PASSWORD
     ARUKAS_JSON_API_TOKEN: USER
+    REPO_ROOT: /home/ubuntu/.go_workspace/src/github.com/arukasio/cli
+
 dependencies:
   cache_directories:
     - /home/ubuntu/.go_workspace
   pre:
-    - go get github.com/kr/godep
+    - go get -u github.com/tools/godep
   override:
-    - mkdir -p "/home/ubuntu/.go_workspace/src/github.com/arukasio/cli"
-    - rsync -azC --delete ./ "/home/ubuntu/.go_workspace/src/github.com/arukasio/cli"
+    - mkdir -p ${REPO_ROOT}
+    - rsync -azC --delete ./ ${REPO_ROOT}
+
 test:
   pre:
-    - godep restore
-    - godep go vet ./...
+    - cd ${REPO_ROOT} && godep restore
   override:
-    - godep go test ./...
+    - cd ${REPO_ROOT} && make test vet
+    - cd ${REPO_ROOT} && godep go test -cover -bench -benchmem `go list ./... | grep -v /vendor/` -v
