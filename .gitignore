@@ -28,5 +28,5 @@ _testmain.go
 bin
 target
 pkg
-.envrc
+.env
 .vagrant
