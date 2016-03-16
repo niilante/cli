@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/arukasio/cli.svg?style=svg)](https://circleci.com/gh/arukasio/cli)
+
 arukas/cli
 ==========
 
