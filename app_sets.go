@@ -5,19 +5,22 @@ import (
 	"github.com/manyminds/api2go/jsonapi"
 )
 
+// TmpJSON Contain JSON data.
 type TmpJSON map[string][]map[string]interface{}
 
+// AppSet represents a application data in struct variables.
 type AppSet struct {
 	App       App
 	Container Container
 }
 
+// MarshalJSON returns as as the JSON encoding of as.
 func (as AppSet) MarshalJSON() ([]byte, error) {
 	var (
 		app           []byte
-		appJson       map[string]map[string]interface{}
+		appJSON       map[string]map[string]interface{}
 		container     []byte
-		containerJson map[string]map[string]interface{}
+		containerJSON map[string]map[string]interface{}
 		marshaled     []byte
 		err           error
 	)
@@ -26,7 +29,7 @@ func (as AppSet) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 
-	if err = json.Unmarshal(app, &appJson); err != nil {
+	if err = json.Unmarshal(app, &appJSON); err != nil {
 		return nil, err
 	}
 
@@ -34,14 +37,14 @@ func (as AppSet) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 
-	if err = json.Unmarshal(container, &containerJson); err != nil {
+	if err = json.Unmarshal(container, &containerJSON); err != nil {
 		return nil, err
 	}
 
 	data := map[string][]map[string]interface{}{
 		"data": []map[string]interface{}{
-			appJson["data"],
-			containerJson["data"],
+			appJSON["data"],
+			containerJSON["data"],
 		},
 	}
 
@@ -52,8 +55,10 @@ func (as AppSet) MarshalJSON() ([]byte, error) {
 	return marshaled, nil
 }
 
+// SelectResources returns the type filter value of TmpJSON.
 func SelectResources(data TmpJSON, resourceType string) TmpJSON {
-	resources := make([]map[string]interface{}, 0)
+	var resources []map[string]interface{}
+	// resources := make([]map[string]interface{}, 0)
 
 	for _, v := range data["data"] {
 		if v["type"] == resourceType {
@@ -67,6 +72,7 @@ func SelectResources(data TmpJSON, resourceType string) TmpJSON {
 	return filtered
 }
 
+// UnmarshalJSON sets *as to a copy of data.
 func (as *AppSet) UnmarshalJSON(bytes []byte) error {
 	var (
 		appBytes       []byte

@@ -7,6 +7,7 @@ import (
 	"runtime"
 )
 
+// ExitCode is exit code.
 var ExitCode = 0
 
 var (
@@ -38,6 +39,7 @@ var (
 	version = cli.Command("version", "Print version information and quit")
 )
 
+// Run arukas
 func Run(args []string) {
 	kingpin.CommandLine.HelpFlag.Short('h')
 	kingpin.Version(VERSION)
@@ -57,12 +59,13 @@ func Run(args []string) {
 	}
 }
 
+// RunTest arukas
 func RunTest(args []string) {
 	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
-	log_file := "/tmp/test.log"
+	logFile := "/tmp/test.log"
 	if runtime.GOOS != "windows" {
-		// log_file = ".test.log"
-		f, err := os.OpenFile(log_file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+		// logFile = ".test.log"
+		f, err := os.OpenFile(logFile, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 
 		if err != nil {
 			log.Fatal("error opening file :", err.Error())

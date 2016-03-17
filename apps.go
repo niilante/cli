@@ -5,25 +5,29 @@ import (
 	"time"
 )
 
+// App represents a application data in struct variables.
 type App struct {
 	ID          string     `json:"-"`
 	Name        string     `json:"name"`
 	CreatedAt   time.Time  `json:"created_at"`
 	UpdatedAt   time.Time  `json:"-"`
-	ContainerId string     `json:"-"`
+	ContainerID string     `json:"-"`
 	Container   *Container `json:"-"`
 	User        *User      `json:"-"`
 }
 
+// GetID returns a stringified of an ID.
 func (a App) GetID() string {
 	return string(a.ID)
 }
 
+// SetID to satisfy jsonapi.UnmarshalIdentifier interface.
 func (a *App) SetID(ID string) error {
 	a.ID = ID
 	return nil
 }
 
+// SetToOneReferenceID sets the reference ID and satisfies the jsonapi.UnmarshalToOneRelations interface
 func (a *App) SetToOneReferenceID(name, ID string) error {
 	if name == "container" {
 		if ID == "" {

@@ -9,28 +9,38 @@ import (
 	"time"
 )
 
+// PortMapping represents a docker container port mapping in struct variables.
 type PortMapping struct {
 	ContainerPort int    `json:"container_port"`
 	ServicePort   int    `json:"service_port"`
 	Host          string `json:"host"`
 }
+
+// TaskPorts is Multiple PortMapping.
 type TaskPorts []PortMapping
+
+// PortMappings is multiple TaskPorts.
 type PortMappings []TaskPorts
 
+// Env represents a docker container environment key-value in struct variables.
 type Env struct {
 	Key   string `json:"key"`
 	Value string `json:"value"`
 }
 
+// Envs is multiple Env.
 type Envs []Env
 
+// Port represents a docker protocol and port-number in struct variables.
 type Port struct {
 	Protocol string `json:"protocol"`
 	Number   int    `json:"number"`
 }
 
+// Ports is multiple Port.
 type Ports []Port
 
+// Container represents a docker container data in struct variables.
 type Container struct {
 	Envs         Envs         `json:"envs"`
 	Ports        Ports        `json:"ports"`
@@ -42,7 +52,7 @@ type Container struct {
 	UpdatedAt    time.Time `json:"updated_at"`
 	App          *App
 	Mem          int    `json:"mem"`
-	AppId        string `json:"app_id"`
+	AppID        string `json:"app_id"`
 	Instances    int    `json:"instances"`
 	IsRunning    bool   `json:"is_running,omitempty"`
 	Cmd          string `json:"cmd"`
@@ -50,15 +60,18 @@ type Container struct {
 	Endpoint     string `json:"end_point,omitempty"`
 }
 
+// GetID returns a stringified of an ID.
 func (c Container) GetID() string {
 	return string(c.ID)
 }
 
+// SetID to satisfy jsonapi.UnmarshalIdentifier interface.
 func (c *Container) SetID(ID string) error {
 	c.ID = ID
 	return nil
 }
 
+// GetReferences returns all related structs to transactions.
 func (c Container) GetReferences() []jsonapi.Reference {
 	return []jsonapi.Reference{
 		{
@@ -68,16 +81,18 @@ func (c Container) GetReferences() []jsonapi.Reference {
 	}
 }
 
+// GetReferencedIDs satisfies the jsonapi.MarshalLinkedRelations interface.
 func (c Container) GetReferencedIDs() []jsonapi.ReferenceID {
 	result := []jsonapi.ReferenceID{}
 
-	if c.AppId != "" {
-		result = append(result, jsonapi.ReferenceID{ID: c.AppId, Name: "app", Type: "apps"})
+	if c.AppID != "" {
+		result = append(result, jsonapi.ReferenceID{ID: c.AppID, Name: "app", Type: "apps"})
 	}
 
 	return result
 }
 
+// GetReferencedStructs to satisfy the jsonapi.MarhsalIncludedRelations interface.
 func (c Container) GetReferencedStructs() []jsonapi.MarshalIdentifier {
 	result := []jsonapi.MarshalIdentifier{}
 	if c.App != nil {
@@ -86,6 +101,7 @@ func (c Container) GetReferencedStructs() []jsonapi.MarshalIdentifier {
 	return result
 }
 
+// SetToOneReferenceID sets the reference ID and satisfies the jsonapi.UnmarshalToOneRelations interface.
 func (c *Container) SetToOneReferenceID(name, ID string) error {
 	if name == "app" {
 		if ID == "" {
@@ -100,6 +116,7 @@ func (c *Container) SetToOneReferenceID(name, ID string) error {
 	return errors.New("There is no to-one relationship with the name " + name)
 }
 
+// ParseEnv parse docker container envs.
 func ParseEnv(envs []string) (Envs, error) {
 	var parsedEnvs Envs
 	for _, env := range envs {
@@ -109,6 +126,7 @@ func ParseEnv(envs []string) (Envs, error) {
 	return parsedEnvs, nil
 }
 
+// ParsePort parse docker container ports.
 func ParsePort(ports []string) (Ports, error) {
 	var parsedPorts Ports
 	for _, port := range ports {
