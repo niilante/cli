@@ -135,6 +135,9 @@ func ParsePort(ports []string) (Ports, error) {
 		if err != nil {
 			return nil, fmt.Errorf("Port number must be numeric. Given: %s", kv[0])
 		}
+		if !(kv[1] == "tcp" || kv[1] == "udp") {
+			return nil, fmt.Errorf("Port protocol must be \"tcp\" or \"udp\"")
+		}
 		parsedPorts = append(parsedPorts, Port{Number: num, Protocol: kv[1]})
 	}
 	return parsedPorts, nil

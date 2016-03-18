@@ -302,7 +302,7 @@ func ToTSV(values []interface{}) string {
 		if v, ok := s.(string); ok {
 			str = append(str, string(v))
 		} else {
-			str = append(str, "<byte>")
+			str = append(str, fmt.Sprint(s))
 		}
 
 	}
