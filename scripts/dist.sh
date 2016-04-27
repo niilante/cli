@@ -24,4 +24,6 @@ for FILENAME in $(find ./pkg -mindepth 1 -maxdepth 1 -type f); do
     cp "./pkg/${FILENAME}" "./pkg/dist/arukas_${VERSION}_${FILENAME}"
 done
 
+ghr -t ${GITHUB_TOKEN} -u ${USERNAME} -r ${CIRCLE_PROJECT_REPONAME} --replace ${VERSION} dist/
+
 exit 0
