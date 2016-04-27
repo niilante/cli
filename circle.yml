@@ -23,3 +23,11 @@ test:
     - cd ${REPO_ROOT} && make test vet
     - cd ${REPO_ROOT} && for package in `go list ./...| grep -v vendor`; do golint ${package}; done
     - cd ${REPO_ROOT} && godep go test -cover -bench -benchmem `go list ./... | grep -v /vendor/` -v
+
+deployment:
+  release:
+    branch: master
+    commands:
+      - go get -u github.com/tcnksm/ghr
+      - XC_OS="linux darwin windows" XC_ARCH="386 amd64" make bin
+      - sh ./scripts/dist.sh $(arukas version)
