@@ -28,6 +28,6 @@ deployment:
   release:
     tag: /v[0-9]+(\.[0-9]+)*/
     commands:
-      - cd ${REPO_ROOT} && XC_OS="linux darwin windows" XC_ARCH="386 amd64" make bin
+      - cd ${REPO_ROOT} && XC_OS="linux darwin windows" XC_ARCH="amd64" make bin
       - test "${CIRCLE_TAG}" == "$(arukas version)"
       - cd ${REPO_ROOT} && touch .env && bash ./scripts/dist.sh "$(arukas version)"
