@@ -5,7 +5,7 @@ This document contains details about the process for building binaries for Aruka
 ## QuickBuild
 
 **Please note: Replaced by your arukas token and aruaks api secret is
- `YOUR_API_TOKEN` and `YOUR_API_SECRET` **
+ `YOUR_API_TOKEN` and `YOUR_API_SECRET`**
 
 * Clone the repo: `git clone https://github.com/arukasio/cli.git`
 * CLI Build: `docker build -t arukasio/arukas:patch .`
