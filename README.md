@@ -1,8 +1,12 @@
-[![Circle CI](https://circleci.com/gh/arukasio/cli.svg?style=svg)](https://circleci.com/gh/arukasio/cli)
+<img src="https://arukas.io/images/logo-orca.svg" alt="" width="100" /> Arukas CLI
+==========
 
+The Arukas CLI is used to manage Arukas apps from the command line.
 * Website: https://arukas.io
 
-# Arukas Cloud Command Line Interface
+[![Circle CI](https://circleci.com/gh/arukasio/cli.svg?style=shield)](https://circleci.com/gh/arukasio/cli)
+
+## Setup
 
 * Get api key here https://app.arukas.io/settings/api-keys
 * edit it .env file
