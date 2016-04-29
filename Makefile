@@ -10,10 +10,10 @@ bin: fmtcheck generate
 # dev creates binaries for testing Arukas locally. These are put
 # into ./bin/ as well as $GOPATH/bin
 dev: fmtcheck generate
-	@TF_DEV=1 sh -c "'$(CURDIR)/scripts/build.sh'"
+	@ARUKAS_DEV=1 sh -c "'$(CURDIR)/scripts/build.sh'"
 
 quickdev: generate
-	@TF_QUICKDEV=1 TF_DEV=1 sh -c "'$(CURDIR)/scripts/build.sh'"
+	@ARUKAS_QUICKDEV=1 ARUKAS_DEV=1 sh -c "'$(CURDIR)/scripts/build.sh'"
 
 # Shorthand for quickly building the core of Arukas. Note that some
 # changes will require a rebuild of everything, in which case the dev
@@ -33,11 +33,11 @@ plugin-dev: fmtcheck generate
 
 # test runs the unit tests
 test: fmtcheck generate
-	TF_ACC= go test $(TEST) $(TESTARGS) -timeout=30s -parallel=4
+	ARUKAS_ACC= go test $(TEST) $(TESTARGS) -timeout=30s -parallel=4
 
 # testrace runs the race checker
 testrace: fmtcheck generate
-	TF_ACC= go test -race $(TEST) $(TESTARGS)
+	ARUKAS_ACC= go test -race $(TEST) $(TESTARGS)
 
 # vet runs the Go source code static analysis tool `vet` to find
 # any common errors.
