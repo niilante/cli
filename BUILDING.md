@@ -10,4 +10,4 @@ This document contains details about the process for building binaries for Aruka
 * Clone the repo: `git clone https://github.com/arukasio/cli.git`
 * CLI Build: `docker build -t arukasio/arukas:patch .`
 * Test execute the CLI: `docker run --rm -e ARUKAS_JSON_API_TOKEN="YOUR_API_TOKEN"
--e ARUKAS_JSON_API_SECRET="YOUR_API_SECRET" arukasio/arukas`
+-e ARUKAS_JSON_API_SECRET="YOUR_API_SECRET" arukasio/arukas:patch`
