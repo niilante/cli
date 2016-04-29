@@ -27,6 +27,10 @@ ARUKAS_JSON_API_SECRET=YOUR_ARUKAS_JSON_API_SECRET
 
 You can look at `.env.sample` for other variables used by this application.
 
+### Quick Compilation and Building for Dev
+
+[BUILDING.md](BUILDING.md)
+
 ### Cross Compilation and Building for Distribution
 
 If you wish to cross-compile arukas-cli for another architecture, you can set the `XC_OS` and `XC_ARCH` environment variables to values representing the target operating system and architecture before calling `make`. The output is placed in the `pkg` subdirectory tree both expanded in a directory representing the OS/architecture combination and as a ZIP archive.
