@@ -285,7 +285,7 @@ func checkResponse(res *http.Response) error {
 	if res.StatusCode == 404 {
 		return fmt.Errorf("The resource does not found on the server: %s", res.Request.URL)
 	} else if res.StatusCode >= 400 {
-		return fmt.Errorf("server returned %d", res.StatusCode)
+		return fmt.Errorf("Got HTTP status code >= 400: %s", res.Status)
 	}
 	return nil
 }
