@@ -11,5 +11,4 @@ RUN ARUKAS_DEV=1 scripts/build.sh
 
 WORKDIR $GOPATH
 
-RUN touch .env
 ENTRYPOINT ["bin/arukas"]
