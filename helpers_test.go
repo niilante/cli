@@ -188,8 +188,7 @@ var responses = []Response{
 		contentType: "application/vnd.api+json",
 		StatusCode:  http.StatusOK,
 		body:        `{"data": ` + containerRunning + `}`,
-	},
-	Response{
+	}, Response{
 		method:      "POST",
 		path:        "/containers/2b21fe34-328f-4d7e-8678-726d9eff2b7f/power",
 		contentType: "application/vnd.api+json",
