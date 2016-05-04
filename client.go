@@ -77,8 +77,7 @@ func (c *Client) Delete(path string) error {
 func NewClientWithOsExitOnErr() *Client {
 	client, err := NewClient()
 	if err != nil {
-		log.Println(err)
-		os.Exit(1)
+		log.Fatal(err)
 	}
 	return client
 }
