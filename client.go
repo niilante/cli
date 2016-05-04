@@ -112,13 +112,13 @@ func NewClient() (*Client, error) {
 	if username := os.Getenv("ARUKAS_JSON_API_TOKEN"); username != "" {
 		client.Username = username
 	} else {
-		return nil, errors.New("ARUKAS_JSON_API_SECRET is not set")
+		return nil, errors.New("ARUKAS_JSON_API_TOKEN is not set")
 	}
 
 	if password := os.Getenv("ARUKAS_JSON_API_SECRET"); password != "" {
 		client.Password = password
 	} else {
-		return nil, errors.New("ARUKAS_JSON_API_TOKEN is not set")
+		return nil, errors.New("ARUKAS_JSON_API_SECRET is not set")
 	}
 
 	return client, nil
