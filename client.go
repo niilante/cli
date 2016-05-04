@@ -19,7 +19,7 @@ import (
 )
 
 // VERSION is cli version.
-const VERSION = "v0.1.1"
+const VERSION = "v0.1.2"
 
 // Client represents a user client data in struct variables.
 type Client struct {
