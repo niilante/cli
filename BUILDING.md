@@ -12,6 +12,16 @@ This document contains details about the process for building binaries for Aruka
 * Test execute the CLI: `docker run --rm -e ARUKAS_JSON_API_TOKEN="YOUR_API_TOKEN"
 -e ARUKAS_JSON_API_SECRET="YOUR_API_SECRET" arukasio/arukas:patch`
 
+### Godep
+
+You can use the `godep` in order to install the external package that depends.
+It will install the package versions specified in `Godeps/Godeps.json` to your `$GOPATH`
+
+```
+go get -u github.com/tools/godep
+godep restore
+```
+
 ## Cross Compilation and Building for Distribution
 
 If you wish to cross-compile arukas-cli for another architecture, you can set the `XC_OS` and `XC_ARCH` environment variables to values representing the target operating system and architecture before calling `make`. The output is placed in the `pkg` subdirectory tree both expanded in a directory representing the OS/architecture combination and as a ZIP archive.
