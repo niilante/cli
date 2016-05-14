@@ -1,5 +1,6 @@
 TEST?=$$(go list ./... | grep -v /vendor/)
 VETARGS?=-all
+GOFMT_FILES?=$$(find . -name '*.go' | grep -v vendor)
 
 default: vet
 
@@ -62,7 +63,7 @@ generate:
 	go generate $$(go list ./... | grep -v /vendor/)
 
 fmt:
-	gofmt -w .
+	gofmt -w $(GOFMT_FILES)
 
 fmtcheck:
 	@sh -c "'$(CURDIR)/scripts/gofmtcheck.sh'"
