@@ -25,7 +25,7 @@ var (
 	runInstances = run.Flag("instances", "Number of instances").Required().Int()
 	runMem       = run.Flag("mem", "Memory size").Required().Int()
 	runAppName   = run.Flag("app-name", "The name of the app.").String()
-	runName      = run.Flag("name", "The name of contiainer which must be unique").String()
+	runName      = run.Flag("name", "The name of container which must be unique").String()
 	runCmd       = run.Flag("cmd", "Command to execute").String()
 	runEnvs      = run.Flag("envs", "Set environment variables. -e KEY=VALUE").Short('e').Strings()
 	runPorts     = run.Flag("ports", "Publish a container's port(s) to the internet. -p 80:tcp").Short('p').Required().Strings()
