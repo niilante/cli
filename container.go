@@ -42,22 +42,22 @@ type Ports []Port
 
 // Container represents a docker container data in struct variables.
 type Container struct {
-	Envs          Envs         `json:"envs"`
-	Ports         Ports        `json:"ports"`
-	PortMappings  PortMappings `json:"port_mappings,omitempty"`
-	StatusText    string       `json:"status_text,omitempty"`
-	ID            string
-	ImageName     string    `json:"image_name"`
-	CreatedAt     JSONTime  `json:"created_at"`
-	UpdatedAt     time.Time `json:"updated_at"`
-	App           *App
-	Mem           int    `json:"mem"`
-	AppID         string `json:"app_id"`
-	Instances     int    `json:"instances"`
-	IsRunning     bool   `json:"is_running,omitempty"`
-	Cmd           string `json:"cmd"`
-	Arukas_domain string `json:"arukas_domain"`
-	Endpoint      string `json:"end_point,omitempty"`
+	Envs         Envs         `json:"envs"`
+	Ports        Ports        `json:"ports"`
+	PortMappings PortMappings `json:"port_mappings,omitempty"`
+	StatusText   string       `json:"status_text,omitempty"`
+	ID           string
+	ImageName    string    `json:"image_name"`
+	CreatedAt    JSONTime  `json:"created_at"`
+	UpdatedAt    time.Time `json:"updated_at"`
+	App          *App
+	Mem          int    `json:"mem"`
+	AppID        string `json:"app_id"`
+	Instances    int    `json:"instances"`
+	IsRunning    bool   `json:"is_running,omitempty"`
+	Cmd          string `json:"cmd"`
+	Name         string `json:"name"`
+	Endpoint     string `json:"end_point,omitempty"`
 }
 
 // GetID returns a stringified of an ID.
