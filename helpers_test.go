@@ -78,7 +78,7 @@ var containerStopped = `
 		"is_running":false,
 		"instances":1,
 		"mem":256,"envs":null,
-		"arukas_domain": "stopped-container",
+		"name": "stopped-container",
 		"end_point": "stopped-container.arukascloud.io",
 		"ports":[
 			{"protocol":"tcp","number":80},
@@ -111,7 +111,7 @@ var containerRunning = `
 		"is_running":true,
 		"instances":1,
 		"mem":256,
-		"arukas_domain": "test-con1",
+		"name": "test-con1",
 		"end_point": "test-con1.arukascloud.io",
 		"envs":null,
 		"ports":[
