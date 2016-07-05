@@ -33,7 +33,7 @@ func listContainers(listAll bool, quiet bool) {
 		client.PrintHeaderln(nil, "CONTAINER ID", "IMAGE", "COMMAND", "CREATED", "STATUS", "NAME", "ENDPOINT")
 		for _, container := range filteredContainer {
 			client.Println(nil, container.ID, container.ImageName, container.Cmd, container.CreatedAt.String(),
-				container.StatusText, container.Name, container.Endpoint)
+				container.StatusText, container.Arukas_domain, container.Endpoint)
 		}
 	}
 }
