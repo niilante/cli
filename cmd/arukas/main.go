@@ -8,5 +8,6 @@ import (
 
 func main() {
 	godotenv.Load()
-	arukas.Run(os.Args)
+	exitCode := arukas.Run(os.Args)
+	os.Exit(exitCode)
 }

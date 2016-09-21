@@ -239,14 +239,14 @@ var handler = func(w http.ResponseWriter, r *http.Request) {
 	io.WriteString(w, body)
 }
 
-func runCommand(args []string) {
+func runCommand(args []string) int {
 	server := httptest.NewServer(http.HandlerFunc(handler))
 	defer server.Close()
 
 	os.Setenv("ARUKAS_JSON_API_URL", server.URL)
-	RunTest(args)
+	return RunTest(args)
 }
 
-func RunTest2(args []string) {
-	Run(args)
+func RunTest2(args []string) int {
+	return Run(args)
 }
