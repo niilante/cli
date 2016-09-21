@@ -11,9 +11,9 @@ func ExampleStart() {
 }
 
 func TestStartAlreadyRunning(t *testing.T) {
-	runCommand([]string{"arukas", "start", "d19b004c-0d59-4f4f-955c-5bace7c49a34"})
-	if ExitCode != 1 {
-		t.Errorf(("ExitCode got: %d, want: 1"), ExitCode)
+	exitCode := runCommand([]string{"arukas", "start", "d19b004c-0d59-4f4f-955c-5bace7c49a34"})
+	if exitCode != 1 {
+		t.Errorf(("ExitCode got: %d, want: 1"), exitCode)
 	}
 }
 
