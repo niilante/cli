@@ -146,7 +146,7 @@ var responses = []Response{
 		method:      "POST",
 		path:        "/app-sets",
 		contentType: "application/vnd.api+json",
-		body:        `{ "data": [` + appStopped + `, ` + containerStopped + ` ], "meta": "name : Deprecated Attribute" }`,
+		body:        `{ "data": [` + appStopped + `, ` + containerStopped + ` ], "meta": { "name": "Deprecated Attribute" } }`,
 		StatusCode:  http.StatusCreated,
 	}, Response{
 		method:      "GET",
