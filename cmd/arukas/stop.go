@@ -1,11 +1,12 @@
-package arukas
+package main
 
 import (
+	arukas "github.com/arukasio/cli"
 	"log"
 )
 
 func stopContainer(stopContainerID string) {
-	client := NewClientWithOsExitOnErr()
+	client := arukas.NewClientWithOsExitOnErr()
 
 	if err := client.Delete("/containers/" + stopContainerID + "/power"); err != nil {
 		client.Println(nil, "Failed to stop the container")

@@ -1,4 +1,4 @@
-package arukas
+package main
 
 func ExampleVersion() {
 	runCommand([]string{"arukas", "version"})

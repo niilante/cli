@@ -1,12 +1,13 @@
-package arukas
+package main
 
 import (
+	arukas "github.com/arukasio/cli"
 	"log"
 )
 
 func removeContainer(containerID string) {
-	client := NewClientWithOsExitOnErr()
-	var container Container
+	client := arukas.NewClientWithOsExitOnErr()
+	var container arukas.Container
 
 	if err := client.Get(&container, "/containers/"+containerID); err != nil {
 		client.Println(nil, "Failed to rm the container")

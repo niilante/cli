@@ -1,4 +1,4 @@
-package arukas
+package main
 
 func ExampleRun() {
 	runCommand([]string{"arukas", "run", "nginx:latest", "--instances", "1", "--mem", "256", "-p", "80:tcp"})

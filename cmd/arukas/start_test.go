@@ -1,4 +1,4 @@
-package arukas
+package main
 
 import (
 	"testing"

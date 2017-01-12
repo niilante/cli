@@ -1,4 +1,4 @@
-package arukas
+package main
 
 func ExamplePs() {
 	runCommand([]string{"arukas", "ps"})
