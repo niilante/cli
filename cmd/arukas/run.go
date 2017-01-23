@@ -1,18 +1,22 @@
-package arukas
+package main
+
+import (
+	arukas "github.com/arukasio/cli"
+)
 
 func createAndRunContainer(name string, image string, instances int, mem int, envs []string, ports []string, cmd string, appName string) {
-	client := NewClientWithOsExitOnErr()
-	var appSet AppSet
+	client := arukas.NewClientWithOsExitOnErr()
+	var appSet arukas.AppSet
 
 	// create an app
-	newApp := App{Name: appName}
+	newApp := arukas.App{Name: appName}
 
-	var parsedEnvs Envs
-	var parsedPorts Ports
+	var parsedEnvs arukas.Envs
+	var parsedPorts arukas.Ports
 
 	if len(envs) > 0 {
 		var err error
-		parsedEnvs, err = ParseEnv(envs)
+		parsedEnvs, err = arukas.ParseEnv(envs)
 		if err != nil {
 			client.Println(nil, err)
 			ExitCode = 1
@@ -22,7 +26,7 @@ func createAndRunContainer(name string, image string, instances int, mem int, en
 
 	if len(ports) > 0 {
 		var err error
-		parsedPorts, err = ParsePort(ports)
+		parsedPorts, err = arukas.ParsePort(ports)
 		if err != nil {
 			client.Println(nil, err)
 			ExitCode = 1
@@ -30,7 +34,7 @@ func createAndRunContainer(name string, image string, instances int, mem int, en
 		}
 	}
 
-	newContainer := Container{
+	newContainer := arukas.Container{
 		Envs:      parsedEnvs,
 		Ports:     parsedPorts,
 		ImageName: image,
@@ -40,7 +44,7 @@ func createAndRunContainer(name string, image string, instances int, mem int, en
 		Name:      name,
 	}
 
-	newAppSet := AppSet{
+	newAppSet := arukas.AppSet{
 		App:       newApp,
 		Container: newContainer,
 	}

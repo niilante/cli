@@ -204,7 +204,6 @@ func (c *Client) APIReq(v interface{}, method, path string, body interface{}) er
 			marshaled, err = json.Marshal(body)
 		}
 		if err != nil {
-			ExitCode = 1
 			return err
 		}
 

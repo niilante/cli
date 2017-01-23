@@ -1,13 +1,14 @@
-package arukas
+package main
 
 import (
+	arukas "github.com/arukasio/cli"
 	"log"
 )
 
 func listContainers(listAll bool, quiet bool) {
-	var parsedContainer []Container
-	var filteredContainer []Container
-	client := NewClientWithOsExitOnErr()
+	var parsedContainer []arukas.Container
+	var filteredContainer []arukas.Container
+	client := arukas.NewClientWithOsExitOnErr()
 
 	if err := client.Get(&parsedContainer, "/containers"); err != nil {
 		log.Println(err)

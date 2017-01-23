@@ -1,6 +1,7 @@
-package arukas
+package main
 
 import (
+	arukas "github.com/arukasio/cli"
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 	"log"
 	"os"
@@ -42,7 +43,7 @@ var (
 // Run arukas
 func Run(args []string) int {
 	kingpin.CommandLine.HelpFlag.Short('h')
-	kingpin.Version(VERSION)
+	kingpin.Version(arukas.VERSION)
 	switch kingpin.MustParse(cli.Parse(args[1:])) {
 	case "ps":
 		listContainers(*psListAll, *psQuiet)
