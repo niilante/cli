@@ -1,6 +1,6 @@
 package main
 
-func ExampleStop() {
+func Example_stopContainer() {
 	runCommand([]string{"arukas", "stop", "d19b004c-0d59-4f4f-955c-5bace7c49a34"})
 	// Output:
 	// Stopping...
