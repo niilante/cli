@@ -1,6 +1,6 @@
 machine:
   environment:
-    GODIST: "go1.7.3.linux-amd64.tar.gz"
+    GODIST: "go1.7.4.linux-amd64.tar.gz"
     GOPATH: /home/ubuntu/.go_workspace
     ARUKAS_JSON_API_SECRET: PASSWORD
     ARUKAS_JSON_API_TOKEN: USER
