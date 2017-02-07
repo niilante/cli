@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/manyminds/api2go/jsonapi"
 	"io"
 	"io/ioutil"
 	"log"
@@ -16,10 +15,12 @@ import (
 	"sort"
 	"strings"
 	"time"
+
+	"github.com/manyminds/api2go/jsonapi"
 )
 
 // VERSION is cli version.
-const VERSION = "v0.1.3"
+const VERSION = "v0.2.0"
 
 // Client represents a user client data in struct variables.
 type Client struct {
