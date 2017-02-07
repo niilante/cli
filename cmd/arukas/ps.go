@@ -1,8 +1,9 @@
 package main
 
 import (
-	arukas "github.com/arukasio/cli"
 	"log"
+
+	arukas "github.com/arukasio/cli"
 )
 
 func listContainers(listAll bool, quiet bool) {
@@ -31,10 +32,10 @@ func listContainers(listAll bool, quiet bool) {
 			client.Println(nil, container.ID)
 		}
 	} else {
-		client.PrintHeaderln(nil, "CONTAINER ID", "IMAGE", "COMMAND", "CREATED", "STATUS", "NAME", "ENDPOINT")
+		client.PrintHeaderln(nil, "CONTAINER ID", "IMAGE", "COMMAND", "CREATED", "STATUS", "ARUKAS DOMAIN", "ENDPOINT")
 		for _, container := range filteredContainer {
 			client.Println(nil, container.ID, container.ImageName, container.Cmd, container.CreatedAt.String(),
-				container.StatusText, container.Name, container.Endpoint)
+				container.StatusText, container.ArukasDomain, container.Endpoint)
 		}
 	}
 }
