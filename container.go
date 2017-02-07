@@ -3,10 +3,11 @@ package arukas
 import (
 	"errors"
 	"fmt"
-	"github.com/manyminds/api2go/jsonapi"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/manyminds/api2go/jsonapi"
 )
 
 // PortMapping represents a docker container port mapping in struct variables.
@@ -56,7 +57,9 @@ type Container struct {
 	Instances    int    `json:"instances"`
 	IsRunning    bool   `json:"is_running,omitempty"`
 	Cmd          string `json:"cmd"`
-	Name         string `json:"name"`
+	// Deprecated: Name will be removed soon, use ArukasDomain instead
+	Name         string `json:"name,omitempty"`
+	ArukasDomain string `json:"arukas_domain"`
 	Endpoint     string `json:"end_point,omitempty"`
 }
 
